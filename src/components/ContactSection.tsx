@@ -1,132 +1,241 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 const ContactSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: infoRef, isVisible: infoVisible } = useScrollReveal();
+  const { ref: mapRef, isVisible: mapVisible } = useScrollReveal();
+  const { ref: formRef, isVisible: formVisible } = useScrollReveal();
+
   return (
-    <section id="contact" className="py-24 bg-background grain">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left - Contact Info */}
+    <section id="contact" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1558981033-0f0309284409?q=80&w=2940&auto=format&fit=crop"
+          alt="Motorcycle garage"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+        {/* Section Header */}
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="font-display text-sm tracking-[0.3em] text-primary uppercase">
+            Get In Touch
+          </span>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mt-4 mb-6 tracking-wide">
+            VISIT THE GARAGE
+          </h2>
+
+          {/* Nordic Divider */}
+          <div className="flex items-center justify-center gap-2">
+            <span className="w-12 h-px bg-border" />
+            <span className="text-primary">✧</span>
+            <span className="w-6 h-px bg-primary" />
+            <span className="text-primary">✧</span>
+            <span className="w-12 h-px bg-border" />
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Contact Info */}
           <div>
-            <p className="font-display text-sm tracking-[0.3em] text-primary mb-3">
-              GET IN TOUCH
-            </p>
-            <h2 className="font-display text-5xl md:text-6xl mb-6">
-              VISIT THE
-              <br />
-              <span className="text-gradient">SHOWROOM</span>
-            </h2>
-            <p className="text-muted-foreground font-light mb-10 max-w-md">
-              Step into a world of chrome and leather. Our showroom houses over 
-              50 vintage motorcycles ready for viewing. Appointments recommended.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg mb-1">Location</h4>
-                  <p className="text-muted-foreground text-sm">
-                    1234 Heritage Highway<br />
-                    Los Angeles, CA 90210
-                  </p>
-                </div>
+            <div
+              ref={infoRef}
+              className={`transition-all duration-1000 ${
+                infoVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-8">
+                <span className="text-primary">✦</span>
+                <span className="font-display text-sm tracking-[0.2em] text-foreground/50 uppercase">
+                  Find Us
+                </span>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg mb-1">Phone</h4>
-                  <p className="text-muted-foreground text-sm">
-                    +1 (555) 123-4567
-                  </p>
-                </div>
-              </div>
+              <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-8 tracking-wide">
+                COME SEE THE
+                <br />
+                <span className="text-primary">IRON UP CLOSE</span>
+              </h3>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg mb-1">Email</h4>
-                  <p className="text-muted-foreground text-sm">
-                    info@vintagebigbikes.com
-                  </p>
-                </div>
-              </div>
+              {/* Divider */}
+              <div className="w-24 h-px bg-border mb-8" />
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-primary" />
+              <div className="space-y-6 mb-12">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 border border-border flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-display text-sm tracking-wider text-foreground/50 uppercase mb-1">
+                      Address
+                    </div>
+                    <div className="font-body text-foreground">
+                      123 Iron Horse Lane
+                      <br />
+                      Austin, TX 78701
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-display text-lg mb-1">Hours</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Tuesday - Saturday: 10am - 6pm<br />
-                    Sunday - Monday: By Appointment
-                  </p>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 border border-border flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-display text-sm tracking-wider text-foreground/50 uppercase mb-1">
+                      Phone
+                    </div>
+                    <div className="font-body text-foreground">(512) 555-0173</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 border border-border flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-display text-sm tracking-wider text-foreground/50 uppercase mb-1">
+                      Email
+                    </div>
+                    <div className="font-body text-foreground">hello@steelstallion.com</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 border border-border flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-display text-sm tracking-wider text-foreground/50 uppercase mb-1">
+                      Hours
+                    </div>
+                    <div className="font-body text-foreground">
+                      Mon - Sat: 9:00 AM - 6:00 PM
+                      <br />
+                      <span className="text-foreground/50">Sunday: Closed</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Google Map */}
+            <div
+              ref={mapRef}
+              className={`relative aspect-video bg-card border border-border overflow-hidden transition-all duration-1000 delay-200 ${
+                mapVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.8744512258697!2d-97.74383492429786!3d30.26776100768638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b5a6e7c9c9c9%3A0x1234567890abcdef!2sAustin%2C%20TX%2078701!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "grayscale(100%) contrast(1.1)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Steel Stallion Location"
+                className="absolute inset-0"
+              />
+              {/* Nordic corners */}
+              <div className="absolute top-2 left-2 w-6 h-6 border-l border-t border-primary/40 pointer-events-none z-10" />
+              <div className="absolute top-2 right-2 w-6 h-6 border-r border-t border-primary/40 pointer-events-none z-10" />
+              <div className="absolute bottom-2 left-2 w-6 h-6 border-l border-b border-primary/40 pointer-events-none z-10" />
+              <div className="absolute bottom-2 right-2 w-6 h-6 border-r border-b border-primary/40 pointer-events-none z-10" />
+            </div>
           </div>
 
-          {/* Right - Contact Form */}
-          <div className="bg-card border border-border rounded-sm p-8 md:p-10">
-            <h3 className="font-display text-2xl mb-6">Send a Message</h3>
-            <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+          {/* Contact Form */}
+          <div
+            ref={formRef}
+            className={`relative transition-all duration-1000 delay-100 ${
+              formVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+            }`}
+          >
+            {/* Nordic Frame */}
+            <div className="absolute -top-4 -left-4 w-16 h-16 border-l-2 border-t-2 border-primary/30 hidden lg:block" />
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 border-r-2 border-b-2 border-primary/30 hidden lg:block" />
+
+            <div className="bg-card border border-border p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-8 h-px bg-primary" />
+                <span className="font-display text-sm tracking-[0.2em] text-primary uppercase">
+                  Send a Message
+                </span>
+              </div>
+
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="font-display text-xs tracking-widest text-foreground/50 uppercase mb-2 block">
+                      Name
+                    </label>
+                    <Input
+                      placeholder="Your name"
+                      className="bg-background border-border focus:border-primary font-body"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-display text-xs tracking-widest text-foreground/50 uppercase mb-2 block">
+                      Email
+                    </label>
+                    <Input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="bg-background border-border focus:border-primary font-body"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="font-display text-sm tracking-wider text-muted-foreground block mb-2">
-                    Name
+                  <label className="font-display text-xs tracking-widest text-foreground/50 uppercase mb-2 block">
+                    Subject
                   </label>
-                  <input
-                    type="text"
-                    className="w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors"
-                    placeholder="John Doe"
+                  <Input
+                    placeholder="How can we help?"
+                    className="bg-background border-border focus:border-primary font-body"
                   />
                 </div>
+
                 <div>
-                  <label className="font-display text-sm tracking-wider text-muted-foreground block mb-2">
-                    Email
+                  <label className="font-display text-xs tracking-widest text-foreground/50 uppercase mb-2 block">
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    className="w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors"
-                    placeholder="john@example.com"
+                  <Textarea
+                    placeholder="Tell us about your project..."
+                    rows={5}
+                    className="bg-background border-border focus:border-primary font-body resize-none"
                   />
                 </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full font-display text-sm tracking-widest uppercase bg-primary hover:bg-primary/90 text-background py-6"
+                >
+                  Send Message
+                </Button>
+              </form>
+
+              {/* Bottom Accent */}
+              <div className="flex items-center justify-center gap-3 mt-8">
+                <span className="w-8 h-px bg-border" />
+                <span className="text-primary/40 text-sm">✧</span>
+                <span className="w-8 h-px bg-border" />
               </div>
-              <div>
-                <label className="font-display text-sm tracking-wider text-muted-foreground block mb-2">
-                  Subject
-                </label>
-                <select className="w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground focus:outline-none focus:border-primary transition-colors">
-                  <option value="">Select an inquiry type</option>
-                  <option value="purchase">Purchase Inquiry</option>
-                  <option value="sell">Sell My Bike</option>
-                  <option value="restoration">Restoration Services</option>
-                  <option value="visit">Schedule a Visit</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label className="font-display text-sm tracking-wider text-muted-foreground block mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows={5}
-                  className="w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors resize-none"
-                  placeholder="Tell us about the bike you're looking for..."
-                />
-              </div>
-              <Button variant="hero" size="lg" className="w-full">
-                Send Message
-              </Button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
