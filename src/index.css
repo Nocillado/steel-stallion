@@ -83,6 +83,31 @@
     font-family: var(--font-display);
     letter-spacing: 0.05em;
   }
+
+  /* Custom Thin Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(20 10% 8%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(38 90% 55% / 0.4);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(38 90% 55% / 0.6);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(38 90% 55% / 0.4) hsl(20 10% 8%);
+  }
 }
 
 @layer utilities {

@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# Steel Stallion
 
-## Project info
+A vintage big bikes company website built with modern web technologies and Scandinavian-inspired design aesthetics.
 
-**URL**: https://lovable.dev/projects/f2dfeba6-9779-413f-9f62-ee164f1abfa7
+## About
 
-## How can I edit this code?
+Steel Stallion is a premium vintage motorcycle company specializing in classic bike restorations, sales, and services. This website showcases the company's heritage, fleet collection, craftsmanship, and provides contact information for enthusiasts and collectors.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - UI component library
+- **Lucide React** - Icon library
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f2dfeba6-9779-413f-9f62-ee164f1abfa7) and start prompting.
+## Design
 
-Changes made via Lovable will be committed automatically to this repo.
+The website features a Nordic-inspired design with:
 
-**Use your preferred IDE**
+- **Typography**: Oswald (display) + Work Sans (body)
+- **Color Palette**: Dark backgrounds with warm amber accents
+- **Decorative Elements**: Nordic-inspired motifs and line decorations
+- **Animations**: Smooth scroll reveal effects using Intersection Observer
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Project Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```
+src/
+├── components/         # React components
+│   ├── ui/            # shadcn/ui components
+│   ├── Navbar.tsx
+│   ├── HeroSection.tsx
+│   ├── HeritageSection.tsx
+│   ├── FleetSection.tsx
+│   ├── CraftsmanshipSection.tsx
+│   ├── TestimonialsSection.tsx
+│   ├── ContactSection.tsx
+│   └── Footer.tsx
+├── hooks/             # Custom React hooks
+│   └── useScrollReveal.ts
+├── pages/             # Page components
+├── lib/               # Utility functions
+└── style.md           # Design style guide
+```
 
-Follow these steps:
+## Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js (v18 or higher)
+- npm or yarn
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd steel-stallion
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Production build
+npm run build
 
-**Use GitHub Codespaces**
+# Preview production build
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Features
 
-## What technologies are used for this project?
+- Responsive design for all screen sizes
+- Smooth scroll navigation
+- Scroll reveal animations
+- Interactive fleet gallery with category filtering
+- Testimonials carousel
+- Contact form with Google Maps integration
+- Transparent navbar with scroll detection
 
-This project is built with:
+## License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/f2dfeba6-9779-413f-9f62-ee164f1abfa7) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+All rights reserved.
